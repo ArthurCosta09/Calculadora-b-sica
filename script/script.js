@@ -51,28 +51,29 @@ function equal() {
             let result = 0;
             switch(op){
                 case "+":
-                    arr.map(value => result += parseInt(value));
+                    arr.map(value => result += parseFloat(value));
                 break;
                 case "-":
-                    arr.map(value => result = (!result) ? parseInt(value) : result - parseInt(value));
+                    arr.map(value => result = (!result) ? parseFloat(value) : result - parseFloat(value));
                 break;
                 case "x":
-                    arr.map(value => result = (!result) ? parseInt(value) : result * parseInt(value));
+                    result = 1;
+                    arr.map(value => result *= parseFloat(value));
                 break;
                 case "/":
                     arr.map((value, index) => {
                       if (!divError) {
                         if (index > 0){
-                            if (parseInt(value) === 0) {
+                            if (parseFloat(value) === 0) {
                                 result = "Zero Division Error!";
                                 divError = true;
                             }
                             else {
-                                result /= parseInt(value);
+                                result /= parseFloat(value);
                             }
                         }
                         else {
-                            result = parseInt(value);
+                            result = parseFloat(value);
                         }
                       }
                     });
@@ -98,6 +99,9 @@ delBtn.addEventListener('click', () => {
 delBtn.addEventListener("dblclick", () => {inputField.value = "";});
 operators.forEach((btn) => btn.addEventListener('click', () => {
     let operator = btn.value;
+    if (state === "result") {
+        state = "calculate";
+    }
     inputField.value += ` ${operator} `;
 }));
 equalBtn.addEventListener('click', equal);
