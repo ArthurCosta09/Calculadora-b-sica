@@ -1,0 +1,171 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+
+body {
+    background: rgb(217, 167, 74);
+    text-align: center;
+}
+
+header {
+    text-align: center;
+    margin-top: 51px;
+    font-family: 'Permanent Marker', cursive;
+    color: 	rgb(56,56,56);
+    font-size: 21px;
+}
+
+.calculator {
+    height: 550px;
+    width: 20%;
+    background: rgba(80,80,80, 0.91);
+    border-radius: 5px;
+    margin: auto;
+    margin-top: 60px;
+    position: relative;
+}
+
+.result-line {
+    width: 120px;
+    margin-top: 11px;
+    border-width: 1px;
+    border-color: rgb(184,184,184);
+    
+}
+
+.calc-line {
+    width: 72px;
+    border-color: rgb(184,184,184);
+    border-width: 2px;
+}
+
+.content {
+    height: 400px;
+    width: 77%;
+    border-radius: 1px;
+    margin: 0 auto;
+    margin-top: 67px;
+    border-radius: 2px;
+    background-color: rgba(105,105,105, 0.88);
+    position: absolute;
+    border-color: rgb(184,184,184);
+    border: 2px;
+    padding-top: 12px;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.result {
+    margin-top: 10px;
+    cursor: auto;
+    outline: none;
+    border-width: 2px;
+    border-color: rgb(128,128,128);
+    background-color: rgb(160,160,160);
+    height: 19px;
+    width: 81%;
+    font-family: 'Kanit', sans-serif;
+    font-size: 20px;
+    color: rgb(56,56,56);
+    text-align: justify;
+    
+}
+
+.operators {
+    margin-top: 21px;
+    text-align: justify;
+    margin-left: 24px;
+}
+
+.operator-btn {
+    height: 45px;
+    width: 45px;
+    font-weight: bold;
+    margin-left: 10px;
+    font-size: 20px;
+    font-family: 'Permanent Marker', cursive;
+    color: rgb(56,56,56);
+    background: rgb(128,128,128);
+    border-color: rgb(184,184,184);
+    border-radius: 3px;
+    border-width: 4px;
+}
+
+.operator-btn:hover {
+    background: rgb(105,105,105);
+    border-color: rgb(120,120,120);
+}
+
+.numbers {
+    margin-top: 21px;
+    text-align: center;
+    margin-right: 10px;
+}
+
+.row {
+    margin-top: 4px;
+}
+
+.number-btn {
+    height: 45px;
+    width: 45px;
+    margin-left: 5px;
+    font-size: 15px;
+    font-family: 'Kanit', sans-serif;
+    background: rgb(192,192,192);
+    border-color: rgb(184,184,184);
+    border-radius: 3px;
+    color: rgb(56,56,56);
+    border-width: 4px;
+}
+
+.number-btn:hover {
+    background: rgb(169,169,169);
+    border-color: rgb(176,176,176);
+}
+
+#zero-btn {
+    width: 99px;
+    
+}
+
+.equal-btn {
+    height: 45px;
+    width: 149px;
+    margin-left: 5px;
+    font-size: 20px;
+    font-family: 'Permanent Marker', cursive;
+    background: rgb(128,128,128);
+    border-color: rgb(184,184,184);
+    border-radius: 3px;
+    border-width: 4px;
+    font-weight: bold;
+    color: rgb(56,56,56);
+}
+
+.equal-btn:hover {
+    background: rgb(105,105,105);
+    border-color: rgb(120,120,120);
+}
+
+.del-btn {
+    height: 45px;
+    width: 45px;
+    margin-left: 5px;
+    font-family: 'Kanit', sans-serif;
+    background: rgb(192,192,192);
+    border-color: rgb(184,184,184);
+    border-radius: 3px;
+    border-width: 4px;
+    margin-top: 1px;
+    color: rgb(56,56,56);
+}
+
+.del-btn:hover {
+    background: rgb(169,169,169);
+    border-color: rgb(176,176,176);
+}
+
+
+
