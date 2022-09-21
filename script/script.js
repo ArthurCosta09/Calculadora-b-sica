@@ -113,7 +113,8 @@ operators.forEach((btn) => btn.addEventListener('click', () => {
     if (state === "result") {
         state = "calculate";
     }
-    inputField.value += ` ${operator} `;
+    inputField.value += ((operator === "+" || operator === "-") && !inputField.value.length) 
+                          ? `${operator}` : ` ${operator} `;
 }));
 equalBtn.addEventListener('click', equal);
 
