@@ -6,8 +6,12 @@ let equalBtn = document.querySelector('.equal-btn');
 inputField.value = "";
 
 let operatorList = ["+", "-", "x", "/"];
-let currOp = "";
-let currNumbers = [];
+let opPrior = {
+    "+": 0,
+    "-": 0,
+    "x": 1,
+    "/": 1
+};
 let state = 'calculate';
 
 
@@ -25,64 +29,71 @@ function clickNumber(element)
 function equal() {
     if (inputField.value) {
         state = "result";
-        let opCounter = {};
+        let ops = [];
+        let numbs = [];
         let arr = inputField.value.split(" ");
-        let divError = false;
-        
+
         arr.map(value => {
             if (operatorList.includes(value)){
-                opCounter[value] = (opCounter[value] || 0) + 1;
+                ops.push(value);
+            }
+            else if (value !== ""){
+                numbs.push(parseFloat(value));
             }
         });
-        arr = arr.filter(value => {return !operatorList.includes(value) && value !== " " && value !== "";});
-        console.log(arr);
-        console.log(opCounter);
 
-        let arrLen = arr.length;
-        let opCounterLen = Object.keys(opCounter).length;
-        console.log(arrLen, opCounterLen);
-
-        if (opCounterLen >= arrLen || opCounterLen > 1){
+        let numLen = numbs.length;
+        let opLen = ops.length;
+        
+        if (opLen >= numLen){
             inputField.value = "Error!";
+            return;
+        }
+        else if (numLen === 1){
+            return;
         }
         else {
-            let op = Object.keys(opCounter)[0];
-            console.log(opCounter[Object.keys(opCounter)[0]]);
             let result = 0;
-            switch(op){
-                case "+":
-                    arr.map(value => result += parseFloat(value));
-                break;
-                case "-":
-                    arr.map(value => result = (!result) ? parseFloat(value) : result - parseFloat(value));
-                break;
-                case "x":
-                    result = 1;
-                    arr.map(value => result *= parseFloat(value));
-                break;
-                case "/":
-                    arr.map((value, index) => {
-                      if (!divError) {
-                        if (index > 0){
-                            if (parseFloat(value) === 0) {
-                                result = "Zero Division Error!";
-                                divError = true;
-                            }
-                            else {
-                                result /= parseFloat(value);
-                            }
+            let opsLen = ops.length;
+            for(let i=0;i<opsLen;i++){
+                let currOp = ops[0];
+                let opIndex = 0;
+                ops.map((value, index) => {
+                    if(index < ops.length - 1){
+                        let after = ops[index+1];
+                        if (opPrior[value] > opPrior[after]){
+                            currOp = value;
+                            opIndex = index;
                         }
                         else {
-                            result = parseFloat(value);
+                            currOp = (opPrior[value] === opPrior[after]) ? currOp : after;
+                            opIndex = (opPrior[value] === opPrior[after]) ? opIndex : index+1;
                         }
-                      }
-                    });
-                break;
-                default: 
-                    result = inputField.value;
-                break;
+                    }
+                });
+                                                
+                let before = numbs[opIndex];
+                let after = numbs[opIndex+1];
+                switch(currOp){
+                    case "+":
+                        result = before + after;
+                    break;
+                    case "-":
+                        result = before - after;
+                    break;
+                    case "x":
+                        result = before * after;
+                    break;
+                    case "/":
+                        result = (!after) ? "Zero Division Error!" : before / after;
+                    break;
+                }
+                if (result === "Zero Division Error!") break;
+                numbs.splice(opIndex, 2, result);
+                ops.splice(opIndex, 1);
+                                
             }
-
+            
             inputField.value = result.toString();
         }
     }
