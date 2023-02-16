@@ -54,8 +54,7 @@ function equal() {
         }
         else {
             let result = 0;
-            let opsLen = ops.length;
-            for(let i=0;i<opsLen;i++){
+            for(let i=0;i<opLen;i++){
                 let currOp = ops[0];
                 let opIndex = 0;
                 ops.map((value, index) => {
