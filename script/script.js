@@ -33,7 +33,7 @@ function equal() {
         let numbs = [];
         let arr = inputField.value.split(" ");
 
-        arr.map(value => {
+        arr.forEach(value => {
             if (operatorList.includes(value)){
                 ops.push(value);
             }
